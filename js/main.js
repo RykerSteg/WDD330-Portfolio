@@ -6,10 +6,11 @@ const links = [
 ]
 
 list = document.getElementById("directory")
-
+let txt = ""
 for (label in links) {
 	txt = links[label]
 }
+let link = ""
 for (url in links) {
 	link = links[url]
 }
