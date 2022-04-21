@@ -1,17 +1,13 @@
 const links = [
     {
-        label: "Week1 Notes",
-        url: "week1/index.html"
+        label: "Week One",
+        url: "weekone/index.html"
+    },
+    {
+        label: "Week Two",
+        url: "weektwo/index.html"
     }
 ]
-
-list = document.getElementById("directory")
-let txt = ""
-for (label in links) {
-	txt = links[label]
+for (i = 0; i < links.length; i++) {
+    document.getElementById("directory").innerHTML += "<li><a href = '" + links[i]["url"] + "'>" + links[i]["label"] + "</a></li>"
 }
-let link = ""
-for (url in links) {
-	link = links[url]
-}
-document.getElementById("p1").innerHTML = "<li>" + "<a href = '"+ link + "'" +  txt + ">" + "</li>";
