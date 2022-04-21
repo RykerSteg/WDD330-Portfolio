@@ -8,9 +8,9 @@ const links = [
 list = document.getElementById("directory")
 
 for (label in links) {
-	let txt = links[label]
+	txt = links[label]
 }
 for (url in links) {
-	let link = links[url]
+	link = links[url]
 }
 document.getElementById("p1").innerHTML = "<li>" + "<a href = '"+ link + "'" +  txt + ">" + "</li>";
