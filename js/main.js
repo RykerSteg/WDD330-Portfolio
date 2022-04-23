@@ -1,11 +1,11 @@
 const links = [
     {
         label: "Week One",
-        url: "weekone/index.html"
+        url: "weekOne/index.html"
     },
     {
         label: "Week Two",
-        url: "weektwo/index.html"
+        url: "weekTwo/index.html"
     }
 ]
 for (i = 0; i < links.length; i++) {
