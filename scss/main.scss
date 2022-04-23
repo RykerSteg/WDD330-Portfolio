@@ -8,15 +8,19 @@ h1 {
 body {
     background-color: #dab785;
 }
-/*ul {
+ul {
     a {
         text-decoration: none;
         color: white;
+        display: inline;
     }
     list-style-type: none;
     li {
         background-color: #04395e;
-        padding:
+        padding: .5em;
+        max-width: 50%;
+        text-align: center;
+        margin: 0 auto;
         &:hover {
             background-color: #031d44;
         }
