@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Activity 1</title>
+</head>
+
+<body>
+    <script>
+        
+       const quiz = [
+           ["what is Superman's real name?", "Clark Kent"],
+           ["What is Wonder Woman's real name?", "Diana Prince"],
+           ["What is Batman's real name?","Bruce Wayne"]
+       ];
+       
+       let score = 0
+       for (const [question,answer] of quiz) {
+           const response = prompt(question);
+           if (response === answer) {
+               alert('Correct!');
+               score++;
+           } else {
+               alert(`Wrong! The correct answer is ${answer}`);
+           }
+       }
+
+       alert(`Game Over, you scored ${score} point${score !==1 ? 's': ''}`);
+    </script>
+</body>
+
+</html>
