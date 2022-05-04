@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale">
+        <title>Week Two Notes and Exercises</title>
+        <meta name="description" content="This is the landing page for my portfolio">
+        <link rel="stylesheet" href="../scss/main.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h3>Exercise One</h3>
+        <button onclick="exerciseOne()">Click me!</button>
+        <h3>Exercise Two</h3>
+        <button onclick="exerciseTwo()">Click me!</button>
+        <h3>Exercise Three</h3>
+        <button onclick="exerciseThree()">Click me!</button>
+        <script>
+            //--------------//
+            //Exersise One
+            function makeUser() {
+                return {
+                    name: "Ryker",
+                    ref: this
+                };
+            }
+
+            let user = makeUser();
+
+            function exerciseOne() {
+                alert( user.ref.name); // This will return an error or undefined.
+            }
+
+            //---------------//
+            //Exersise Two
+            let calculator = {
+                //read method
+                read() {
+                    askA = "Enter a value for A."
+                    askB = "Enter a value for B" 
+                    a = parseInt(prompt(askA));
+                    b = parseInt(prompt(askB));
+                },
+
+                //sum method
+                sum() {
+                    sum = a + b;
+                    return sum
+                },
+
+                //multiply method
+                mul() {
+                    times = a * b;
+                    return times
+                }
+            }
+
+            function exerciseTwo () {
+                calculator.read();
+                alert( calculator.sum() );
+                alert( calculator.mul() );
+            }
+
+            //--------------//
+            //Exercise Three
+            let ladder = {
+                step: 0,
+                up() {
+                    this.step++;
+                    return this;
+                },
+                down() {
+                    this.step--;
+                    return this;
+                },
+                showStep: function() {
+                    alert( this.step);
+                    return this;
+                }
+            }
+            function exerciseThree() {
+                ladder.up().up().down().showStep().down().showStep();
+            }
+
+        </script>
+    </body>
+</html>
