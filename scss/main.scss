@@ -9,18 +9,21 @@ body {
     background-color: #dab785;
 }
 ul {
-    a {
+    margin: 0 auto;
+    text-align: center;
+        a {
         text-decoration: none;
         color: white;
-        display: inline;
+        margin: 0 auto;
     }
     list-style-type: none;
     li {
         background-color: #04395e;
         padding: .5em;
-        max-width: 50%;
+        max-width: 100%;
         text-align: center;
-        margin: 0 auto;
+        margin: -.15em;
+        display: inline-block;
         &:hover {
             background-color: #031d44;
         }
