@@ -13,7 +13,7 @@ const links = [
     },
     {
         label: "Week Four",
-        url: "weeFour/index.html"
+        url: "weekFour/index.html"
     }
 ]
 for (i = 0; i < links.length; i++) {
