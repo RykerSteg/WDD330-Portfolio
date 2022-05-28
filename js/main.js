@@ -18,6 +18,10 @@ const links = [
     {
         label: "Week Five",
         url: "weekFive/index.html"
+    },
+    {
+        label: "Challenge One",
+        url: "challengeOne/index.html"
     }
 ]
 for (i = 0; i < links.length; i++) {

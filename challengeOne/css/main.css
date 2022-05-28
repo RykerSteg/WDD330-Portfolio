@@ -1,23 +1,79 @@
 .notActive{
     display:none;
 }
+nav ul {
+    margin: 0 auto;
+    text-align: left;
+    list-style-type: none;
+    margin-bottom: .5em;
+  }
+  nav ul a {
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+    font-size: large;
+  }
+  nav ul li {
+    background-color: #04395e;
+    padding: 0.5em;
+    max-width: 100%;
+    text-align: left;
+    margin: -0.15em;
+    display: inline-block;
+  }
+  nav ul li:hover {
+    background-color: #031d44;
+  }
+body {
+    background-color: #dab785;
+}
 #listApp {
     border: black solid 1px;
     margin: 0 auto;
     text-align: center;
+    width: 50%;
+    background-color: #04395e;
+    color: white;
 }
+#listApp h1 {
+    background-color: #031d44;
+    padding:.5em;
+    margin-top:0;
+}
+#taskInput {
+    font-size: medium;
+}
+#addItem {
+    font-size: medium;
+    
+}
+
 #todoList {
     list-style-type: none;
     display: inline;
 }
 #todoList li{
     margin: .5em;
-    padding: .5em;
-    border: solid black 1px;
+    border: solid white 1px;
+    text-align: right;
+    font-size: large;
     
 
 }
-button {
+.deleteBtn {
     margin-left: 1em;
-    margin-right:1em;
+    padding: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: right;
+    background-color: #031d44;
+    color:white;
+}
+.deleteBtn:hover {
+    background-color: white;
+    color:#031d44;
+}
+.cb {
+    padding: .5em;
+    font-size: large;
 }

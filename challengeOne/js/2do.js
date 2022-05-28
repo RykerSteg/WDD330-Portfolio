@@ -12,9 +12,9 @@ function renderTodoList(list, element, items, hidden) {
         let btn = null;
 
         if(hidden && listItem.completed) {
-            item.innerHTML = `<label><input type="checkbox" checked><strike>${listItem.content}</strike></label><button>Delete</button>`;
+            item.innerHTML = `<label><input type="checkbox" checked><strike>${listItem.content}</strike></label><button class="deleteBtn">Delete</button>`;
         } else {
-            item.innerHTML = `<label><input type="checkbox">${listItem.content}</label><button>Delete</button>`;
+            item.innerHTML = `<label><input type="checkbox">${listItem.content}</label><button class="deleteBtn">Delete</button>`;
         }
         
         box = item.childNodes[0].childNodes[0];

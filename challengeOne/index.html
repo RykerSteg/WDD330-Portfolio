@@ -12,19 +12,22 @@
             <nav>
                 <ul>
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="teamActivity/teamActivity.html" >Team Activity</a></li>
                 </ul>
             </nav>
         </header>
         <section id="listApp">
             <h1>ToDo List</h1>
-            <input id="taskInput" type="text" name="taskInput" autofocus>
-            <button id="addItem">Add to List</button>
+            <div id="input">
+                <input id="taskInput" type="text" name="taskInput" autofocus>
+                <button id="addItem">Add to List</button>
+            </div>
             <ul id="todoList"></ul>
-            <input type="radio" id="active" name="filter">
-            <label for="active">Show Active</label>
-            <input type="radio" id="all" name="filter">
-            <label for="all">Show All</label>
+            <div class="cb">
+                <input type="radio" id="active" name="filter">
+                <label for="active">Show Active</label>
+                <input type="radio" id="all" name="filter">
+                <label for="all">Show All</label>
+            </div>
         </section>
         <script src="js/index.js" type="module"></script>
     </body>
