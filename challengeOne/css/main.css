@@ -1,0 +1,23 @@
+.notActive{
+    display:none;
+}
+#listApp {
+    border: black solid 1px;
+    margin: 0 auto;
+    text-align: center;
+}
+#todoList {
+    list-style-type: none;
+    display: inline;
+}
+#todoList li{
+    margin: .5em;
+    padding: .5em;
+    border: solid black 1px;
+    
+
+}
+button {
+    margin-left: 1em;
+    margin-right:1em;
+}
