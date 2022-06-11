@@ -91,3 +91,4 @@ manipulateImage();
 
 var button = document.getElementById("saveButton");
 button.addEventListener("click", saveDrawing, false);
+
