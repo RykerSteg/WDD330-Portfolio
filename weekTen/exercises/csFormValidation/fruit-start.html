@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css" >
+        <title>Form Validation</title>
+    </head>
+    <body>
+        <form>
+          <label for="choose">Would you prefer a banana or cherry? (required)</label>
+          <input id="choose" name="i_like" required pattern="[Bb]anana|[Cc]herry">
+          <button>Submit</button>
+        </form>
+        <div id="output"></div>
+    </body>
+</html>
