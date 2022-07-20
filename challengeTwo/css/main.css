@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root{
+    --color1: #d5f2e3;
+    --color2: #ba2d0b;
+    --color3: #73ba9b;
+    --color4: #01110a;
+}
+
+main {
+    background-color: var( --color1);
+    margin: 0 auto;
+    padding: 1em;
+}
+
+div {
+    background-color: var( --color3);
+    font-family: 'Alegreya';
+    margin: 0 auto;
+}
+
+#tabs {
+    list-style: none;
+    text-align: left;
+    margin: 0 auto;
+}
+#tabs li {
+    display: inline-block;
+    margin-left: -.5em;  
+}
+
+input[type="radio"] {
+    display: none;
+}
+.tabLabel {
+    background-color: var(--color4);
+    color: var(--color1);
+    padding:1em;
+    display: inline-block;
+}
+input:checked ~ label {
+    background-color: var(--color3);
+    color: var(--color4);
+}
+
+.title, h1, label {
+    font-family: "Source Sans Pro", sans-serif ;
+}
+.tabContent {
+    display: none;
+}
+li {
+    list-style: none;
+}
+.visible {
+    display: inline;
+    margin: 1em;
+    text-align: left;
+}
+#content {
+    padding: 1em;
+}
