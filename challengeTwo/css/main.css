@@ -60,3 +60,6 @@ li {
 #content {
     padding: 1em;
 }
+.recipeContent {
+    display: none;
+}

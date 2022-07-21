@@ -1,11 +1,9 @@
 import { setToLS, getFromLS, bindTouch } from "./utilities.js";
 
 let groceryList = null;
-let newList = [];
+let recipeList = null;
 let url="";
 
-const genBtn = document.getElementById("generate");
-const output = document.getElementById("outputDiv");
 const listOuput = document.getElementById("list");
 const recipeNum = document.getElementById("recipeNum");
 let ingredients;
@@ -18,14 +16,15 @@ const recipeTab = document.getElementById('recipeTab');
 let tabs = document.getElementById("tabs");
 tabs.addEventListener('click', tabChange)
 
-function renderRecipe(recipe) {
+function renderRecipe(recipe, key) {
     let recipeCard = document.createElement('section');
     let recipeTitle = document.createElement('h2');
     let recipeContent = document.createElement('div');
     let btn = document.createElement('button');
   
-    recipeTitle.textContent = `${recipe.title}`;
+    recipeTitle.innerHTML = `<a href="#">${recipe.title}</a>`;
     recipeContent.innerHTML = `${recipe.instructions}`;
+    recipeContent.classList.add('recipeContent')
     btn.textContent = "Delete";
     btn.classList.add('delete');
   
@@ -33,23 +32,74 @@ function renderRecipe(recipe) {
     recipeCard.appendChild(recipeContent);
     recipeCard.appendChild(btn);
     recipeTitle.setAttribute('class', 'title');
-  
+    
+    recipeCard.classList.add('card');
+
     let recipeOutput = document.getElementById('recipeContent');
   
     recipeOutput.appendChild(recipeCard);
-}
+    let deleteBtns = document.querySelectorAll('.delete');
+      deleteBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            btn.parentElement.remove();
+          });
 
-function renderGroceries(array, key) {
+    });
+}
+function renderGroceriesFromLs(key, array) {
+    array.forEach(ingredient => {
+      let li = document.createElement("li");
+      let listItem = ingredient;
+  
+      li.innerHTML = `<label><input type="checkbox">${listItem}</label><br><button class="delete">Delete</button>`;
+  
+      li.classList.add('glItem');
+      listOuput.appendChild(li);
+      groceryList.push(listItem);
+      })
+      let deleteBtns = document.querySelectorAll('.delete');
+      deleteBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            btn.parentElement.remove();
+            let newArrayItems = Array.from(document.querySelectorAll('.glItem'));
+            let newArray = [];
+            newArrayItems.forEach(item =>{
+                let listItem = item.firstChild.textContent;
+                newArray.push(listItem);
+            })
+            groceryList = newArray
+            setToLS(key, groceryList);
+            console.log(groceryList)
+          });
+        });
+}
+function renderGroceries(key, array) {
     array.forEach(ingredient => {
       let li = document.createElement("li");
       let listItem = ingredient['nameClean'];
   
-      li.innerHTML = `<label><input type="checkbox">${listItem}</label><button class="delete">Delete</button>`;
+      li.innerHTML = `<label><input type="checkbox">${listItem}</label><br><button class="delete">Delete</button>`;
+      li.classList.add("glItem");
   
       listOuput.appendChild(li);
-    })
-    groceryList.push('array');
-    setToLS(key, groceryList);
+      groceryList.push(listItem);
+      })
+      setToLS(key, groceryList)
+      let deleteBtns = document.querySelectorAll('.delete');
+      deleteBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            btn.parentElement.remove();
+            let newArrayItems = Array.from(document.querySelectorAll('.glItem'));
+            let newArray = [];
+            newArrayItems.forEach(item =>{
+                let listItem = item.textContent
+                newArray.push(listItem);
+            })
+            groceryList = newArray
+            setToLS(key, groceryList);
+            console.log(groceryList)
+          });
+        });
 }
 
 function tabChange() {
@@ -68,28 +118,23 @@ function tabChange() {
     }
 }
 
-function addListItem(value, key) {
-    const newlistItem = {
-        id: new Date(),
-        content: value,
-        completed: false
-    };
+// function addListItem(value, key) {
+//     const newlistItem = {
+//         id: new Date(),
+//         content: value,
+//         completed: false
+//     };
 
-    groceryList.push(newlistItem);
-    setToLS(key, groceryList);
-}
+//     groceryList.push(newlistItem);
+//     setToLS(key, groceryList);
+//     console.log(getFromLS(key));
+// }
 
-function deleteListItem(key) {
-    let list = groceryList.filter(item => item.id != key);
-    groceryList = list;
-    setToLS(key, groceryList);
-}
-
-function getListItems(key) {
-    if (groceryList === null) {
-        groceryList = getFromLS(key) || [];
+function getListItems(key, list) {
+    if (list === null) {
+        list = getFromLS(key) || [];
     }
-    renderGroceries(groceryList, key);
+    return list
 }
 
 export default class GroceryList {
@@ -101,10 +146,13 @@ export default class GroceryList {
         bindTouch("#generate", this.generateMeals.bind(this));
 
         this.listItems();
+        //localStorage.clear()
     }
 
     generateMeals() {
+        event.preventDefault();
         let output = document.getElementById("outputDiv");
+        let key = this.key
       
           url = `https://api.spoonacular.com/recipes/random?apiKey=fe722734adf14f0da7114cf4ea31809d&limitLicense=true&number=${recipeNum.value}`;
           
@@ -117,7 +165,7 @@ export default class GroceryList {
                 }
             })
           
-            .then(function (jsonObject) {
+            .then(function (jsonObject,) {
                 const meals = jsonObject['recipes'];
                 output.innerHTML = "";
                 meals.forEach(recipe => {
@@ -133,11 +181,11 @@ export default class GroceryList {
                   ingredients = meals[0]["extendedIngredients"];
           
                   btn.addEventListener('click', function() {
-                    renderGroceries(ingredients, this.key)
+                    renderGroceries(key, ingredients);
                   });
 
                   btn.addEventListener('click', function() {
-                    renderRecipe(recipe)
+                    renderRecipe(recipe, key)
                   });
           
                   card.appendChild(h2);
@@ -151,15 +199,8 @@ export default class GroceryList {
             })
     }
     listItems() {
-        getListItems(this.key);
-    }
-
-    /*removeListItem(id) {
-        let ingredient = this.findListItem(id);
-
-        if(ingredient) {
-            deleteListItem(id);
-            renderTodoList(groceryList, this.listItem, this, true);
+        groceryList = getListItems(this.key, groceryList);
+        recipeList = getListItems("recipes", recipeList);
+        renderGroceriesFromLs(this.key, groceryList);
         }
-    }*/
-}
+    }
