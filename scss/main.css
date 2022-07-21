@@ -35,6 +35,20 @@ ul li:hover {
   padding: 2em;
 }
 
+.menu {
+  margin: 2em;
+  list-style: none;
+  text-align: center;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+  background-color: #04395e;
+  padding: 1em;
+  border-radius: 0.5em 0.5em 0.5em;
+  text-align: center;
+}
+
 /*
 colors
 031d44 -- oxford blue

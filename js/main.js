@@ -20,10 +20,6 @@ const links = [
         url: "weekFive/index.html"
     },
     {
-        label: "Challenge One",
-        url: "challengeOne/index.html"
-    },
-    {
         label: "Week Seven",
         url: "weekSeven/index.html"
     },
@@ -38,8 +34,16 @@ const links = [
     {
         label: "Week Ten",
         url: "weekTen/index.html"
+    },
+    {
+        label: "Challenge One",
+        url: "challengeOne/index.html"
+    },
+    {
+        label: "Challeng Two",
+        url: "challengeTwo/mealSelector.html"
     }
 ]
 for (i = 0; i < links.length; i++) {
-    document.getElementById("directory").innerHTML += "<li><a href = '" + links[i]["url"] + "'>" + links[i]["label"] + "</a></li>"
+    document.getElementById("directory").innerHTML += "<li class = 'menu'><a href = '" + links[i]["url"] + "'>" + links[i]["label"] + "</a></li>"
 }
