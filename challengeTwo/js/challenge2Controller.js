@@ -16,8 +16,34 @@ const recipeTab = document.getElementById('recipeTab');
 let tabs = document.getElementById("tabs");
 tabs.addEventListener('click', tabChange)
 
+function renderRecipeFromLs (array, key) {
+    array.forEach(item => {
+        let recipeCard = document.createElement('li');
+        recipeCard.classList.add('card');
+
+        recipeCard.innerHTML =`${item}`;
+        let recipeOutput = document.getElementById('recipeContent');
+        recipeOutput.appendChild(recipeCard);
+
+        let deleteBtns = document.querySelectorAll('.delete');
+        deleteBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            btn.parentElement.remove();
+            let newArrayItems = Array.from(document.querySelectorAll('.card'));
+            let newArray = [];
+            newArrayItems.forEach(item =>{
+                let listItem = item.innerHTML;
+                newArray.push(listItem);
+            })
+            recipeList = newArray
+            setToLS(key, recipeList);
+            console.log(recipeList)
+          });
+        })
+    })
+}
 function renderRecipe(recipe, key) {
-    let recipeCard = document.createElement('section');
+    let recipeCard = document.createElement('li');
     let recipeTitle = document.createElement('h2');
     let recipeContent = document.createElement('div');
     let btn = document.createElement('button');
@@ -36,12 +62,25 @@ function renderRecipe(recipe, key) {
     recipeCard.classList.add('card');
 
     let recipeOutput = document.getElementById('recipeContent');
-  
+    recipeList.push(recipeCard.innerHTML);
+    setToLS("recipes", recipeList);
+    console.log(getFromLS("recipes"));
+
     recipeOutput.appendChild(recipeCard);
+
     let deleteBtns = document.querySelectorAll('.delete');
       deleteBtns.forEach(btn => {
           btn.addEventListener('click', function() {
             btn.parentElement.remove();
+            let newArrayItems = Array.from(document.querySelectorAll('card'));
+            let newArray = [];
+            newArrayItems.forEach(item =>{
+                let listItem = item.innerHTML;
+                newArray.push(listItem);
+            })
+            recipeList = newArray
+            setToLS(key, recipeList);
+            console.log(recipeList)
           });
 
     });
@@ -118,18 +157,6 @@ function tabChange() {
     }
 }
 
-// function addListItem(value, key) {
-//     const newlistItem = {
-//         id: new Date(),
-//         content: value,
-//         completed: false
-//     };
-
-//     groceryList.push(newlistItem);
-//     setToLS(key, groceryList);
-//     console.log(getFromLS(key));
-// }
-
 function getListItems(key, list) {
     if (list === null) {
         list = getFromLS(key) || [];
@@ -202,5 +229,6 @@ export default class GroceryList {
         groceryList = getListItems(this.key, groceryList);
         recipeList = getListItems("recipes", recipeList);
         renderGroceriesFromLs(this.key, groceryList);
+        renderRecipeFromLs(recipeList, "recipes");
         }
     }
