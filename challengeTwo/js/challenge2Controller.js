@@ -90,7 +90,7 @@ function renderGroceriesFromLs(key, array) {
       let li = document.createElement("li");
       let listItem = ingredient;
   
-      li.innerHTML = `<label><input type="checkbox">${listItem}</label><br><button class="delete">Delete</button>`;
+      li.innerHTML = `<label><input type="checkbox">${listItem}</label><button class="delete">Delete</button>`;
   
       li.classList.add('glItem');
       listOuput.appendChild(li);
@@ -117,7 +117,7 @@ function renderGroceries(key, array) {
       let li = document.createElement("li");
       let listItem = ingredient['nameClean'];
   
-      li.innerHTML = `<label><input type="checkbox">${listItem}</label><br><button class="delete">Delete</button>`;
+      li.innerHTML = `<label><input type="checkbox">${listItem}</label><button class="delete">Delete</button>`;
       li.classList.add("glItem");
   
       listOuput.appendChild(li);

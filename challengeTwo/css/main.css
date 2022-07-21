@@ -18,6 +18,9 @@ div {
     font-family: 'Alegreya';
     margin: 0 auto;
 }
+button {
+    padding: .5em;
+}
 
 #tabs {
     list-style: none;
@@ -42,15 +45,41 @@ input:checked ~ label {
     background-color: var(--color3);
     color: var(--color4);
 }
+.tabLabel:hover{
+    background-color: var(--color3);
+    color: var(--color4);
+}
 
-.title, h1, label {
+.title, h1, label, h2 {
     font-family: "Source Sans Pro", sans-serif ;
 }
 .tabContent {
     display: none;
 }
+input[type='checkbox'] {
+    display: none;
+}
 li {
     list-style: none;
+}
+#groceryListContent li {
+    list-style: none;
+    margin: .5em;
+    border: solid white 1px;
+    text-align: left;
+    font-size: larger;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#groceryListContent li button {
+    text-align: right;
+    padding: 1em;
+    
+}
+#groceryListContent li label {
+    margin-right: auto;
+    padding: 1em;
+    
 }
 .visible {
     display: inline;
